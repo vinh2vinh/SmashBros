@@ -36,10 +36,13 @@ def Q0(conn):
     Franchise
     WHERE Franchise.fran_id = Charachter.fran_id;''')
     queries = cursor.fetchall()
-    Column_header = [i[0] for i in cursor.description]
-    print(Column_header[0],'|', Column_header[1])
+    l = '{:<10} {:>21}'.format("Name", "Franchise")
+    z = '{:<10} {:>21}'.format('____','_________')
+    print(l)
+    print(z)
     for item in queries:
-        print(item[0],'|', item[1])
+        b = '{:<10} {:>21}'.format(item[0], item[1])
+        print(b)
 
 
 def Q1(conn, charname):
@@ -55,10 +58,13 @@ def Q1(conn, charname):
     AND Franchise.fran_id = Charachter.fran_id
     AND Charachter.name Like ?;''', ("{}%".format(charname),))
     queries = cursor.fetchall()
-    Column_header = [i[0] for i in cursor.description]
-    print(Column_header[0],'|', Column_header[1],'|', Column_header[2])
+    l = '{:<10} {:>10} {:>10}'.format("Name", "Tier", "Franchise")
+    z = '{:<10} {:>10} {:>10}'.format('____','____', '_________')
+    print(l)
+    print(z)
     for item in queries:
-        print(item[0],'|', item[1],'|', item[2])
+        b = '{:<10} {:>10} {:>10}'.format(item[0], item[1], item[2])
+        print(b)
             
 
     print("++++++++++++++++++++++++++++++++++")
@@ -73,10 +79,13 @@ def Q2(conn, charname):
     WHERE Charachter.fran_id = Franchise.fran_id
     AND Franchise.fran_name LIKE ?;''', ("%{}%".format(charname),))
     queries = cursor.fetchall()
-    Column_header = [i[0] for i in cursor.description]
-    print(Column_header[0],'|', Column_header[1])
+    l = '{:<10} {:>10} '.format("Name", "Franchise")
+    z = '{:<10} {:>10} '.format('____','_________')
+    print(l)
+    print(z)
     for item in queries:
-        print(item[0],'|', item[1])
+        b = '{:<10} {:>10}'.format(item[0], item[1])
+        print(b)
             
 
 
@@ -95,10 +104,13 @@ def Q3(conn):
     WHERE Charachter.char_id = Shadow_Fighter.shadow_id
     AND OG.char_id = Shadow_Fighter.og_id;''')
     queries = cursor.fetchall()
-    Column_header = [i[0] for i in cursor.description]
-    print(Column_header[0],"|",Column_header[1])
+    l = '{:<10} {:>10}'.format("Shadow Fighter", "Original")
+    z = '{:<10} {:>10}'.format('______________','________')
+    print(l)
+    print(z)
     for item in queries:
-        print(item[0] ,"|", item[1])
+        b = '{:<10} {:>10}'.format(item[0], item[1])
+        print(b)
             
 
     print("++++++++++++++++++++++++++++++++++")
@@ -118,10 +130,13 @@ def Q4(conn):
     AND Franchise.fran_id = DLC.fran_id
     AND Charachter.tier_id = Tier.tier_id;''')
     queries = cursor.fetchall()
-    Column_header = [i[0] for i in cursor.description]
-    print(Column_header[0],"|",Column_header[1],"|",Column_header[2])
+    l = '{:<10} {:>10} {:>10}'.format("Franchise", "Name", "Tier")
+    z = '{:<10} {:>10} {:>10}'.format('_________', '____','____')
+    print(l)
+    print(z)
     for item in queries:
-        print(item[0] ,"|", item[1],"|",item[2])
+        b = '{:<10} {:>10} {:>10}'.format(item[0], item[1], item[2])
+        print(b)
             
 
     print("++++++++++++++++++++++++++++++++++")
@@ -139,10 +154,13 @@ WHERE Tier.tier_id = Charachter.tier_id
   AND Franchise.fran_id = Charachter.fran_id
   AND Tier.tier LIKE ?;''', ("%{}%".format(tier),))
     queries = cursor.fetchall()
-    Column_header = [i[0] for i in cursor.description]
-    print(Column_header[0],"|",Column_header[1],"|",Column_header[2])
+    l = '{:<10} {:>10} {:>10}'.format("Name", "Tier","Franchise")
+    z = '{:<10} {:>10} {:>10}'.format( '____','____','_________')
+    print(l)
+    print(z)
     for item in queries:
-        print(item[0],'|',item[1],'|',item[2])
+        b = '{:<10} {:>10} {:>10}'.format(item[0], item[1], item[2])
+        print(b)
             
 
     print("++++++++++++++++++++++++++++++++++")
@@ -161,10 +179,13 @@ def Q6(conn, name):
     AND Charachter.tier_id = Tier.tier_id
     AND Charachter.name LIKE ?''', ("{}%".format(name),))
     queries = cursor.fetchall()
-    Column_header = [i[0] for i in cursor.description]
-    print(Column_header[0],"|",Column_header[1],"|",Column_header[2])
+    l = '{:<10} {:>10} {:>10}'.format("Name", "Tier","GSP")
+    z = '{:<10} {:>10} {:>10}'.format( '____','____','___')
+    print(l)
+    print(z)
     for item in queries:
-        print(item[0] ,"|", item[1],"|",item[2])
+        b = '{:<10} {:>10} {:>10}'.format(item[0], item[1], item[2])
+        print(b)
             
 
     print("++++++++++++++++++++++++++++++++++")
@@ -187,10 +208,13 @@ def Q7(conn):
     AND OG.char_id = Pros.Alt
     AND alt_tier.tier_id = OG.tier_id''')
     queries = cursor.fetchall()
-    Column_header = [i[0] for i in cursor.description]
-    print(Column_header[0],"|",Column_header[1],"|",Column_header[2],"|",Column_header[3],"|",Column_header[4])
+    l = '{:<10} {:>10} {:>10} {:>10}'.format("Player", "Main", "Tier", "Alt", "Tier")
+    z = '{:<10} {:>10} {:>10} {:>10}'.format( '______', '____', '____', '___', '____')
+    print(l)
+    print(z)
     for item in queries:
-        print(item[0] ,"|", item[1],"|",item[2],"|",item[3],"|",item[4])
+        b = '{:<10} {:>10} {:>10} {:>10}'.format(item[0], item[1], item[2], item[3])
+        print(b)
             
 
     print("++++++++++++++++++++++++++++++++++")
@@ -207,7 +231,7 @@ def Q8(conn):
     print('insert tier ID:')
     tierid = int(input())
 
-    conn.execute('''INSERT INTO Character(name, char_id, fran_id, tier_id) VALUES(:name, :charid, :franid, :tierid);''', 
+    conn.execute('''INSERT INTO Charachter(name, char_id, fran_id, tier_id) VALUES(:name, :charid, :franid, :tierid);''', 
     {'name': name, 'charid': charid, 'franid': franid, 'tierid': tierid})
     conn.commit()
             
